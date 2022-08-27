@@ -57,9 +57,9 @@ public class OrdersController {
         return new ArrayList<>();
     }
 
-    @GetMapping("/orders/user/${user}")
-    ArrayList<OrderDto> findAll(@PathVariable String user) {
-        final ArrayList<OrderEntity> orders = ordersService.findAllOf(user);
+    @GetMapping("/orders/user/{userid}")
+    ArrayList<OrderDto> findAllOfUser(@PathVariable String userid) {
+        final ArrayList<OrderEntity> orders = ordersService.findAllOf(userid);
         ArrayList<OrderDto> dtos = new ArrayList<>();
         for (OrderEntity orderEntity : orders) {
             dtos.add(OrderDto.fromOrderEntity(orderEntity));
