@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderEntity;
 
 public class OrderListDto extends ArrayList<OrderDto> {
-    final ArrayList<OrderDto> orders;
+    public final ArrayList<OrderDto> orders;
 
     public OrderListDto(ArrayList<OrderDto> orders) {
         this.orders = orders;

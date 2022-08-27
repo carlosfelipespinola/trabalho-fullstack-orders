@@ -6,11 +6,11 @@ import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderEntity;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderProductEntity;
 
 public class OrderDto {
-    String id;
-    String usuario;
-    String status;
-    float price;
-    ArrayList<ProductDto> products;
+    public String id;
+    public String usuario;
+    public String status;
+    public float price;
+    public ArrayList<ProductDto> products;
 
     public OrderDto(String id, String usuario, String status, float price, ArrayList<ProductDto> products) {
         this.id = id;
