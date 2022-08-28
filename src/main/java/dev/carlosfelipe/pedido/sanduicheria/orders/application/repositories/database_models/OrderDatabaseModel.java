@@ -23,7 +23,7 @@ public class OrderDatabaseModel {
   public String id;
 
   @Column
-  public String user;
+  public String userId;
 
   @Column
   public String paymentReceipt;
@@ -36,7 +36,7 @@ public class OrderDatabaseModel {
 
   public OrderDatabaseModel(String id, String user, String paymentReceipt, OrderEntity.OrderStatus status, List<OrderProductModel> products) {
     this.id = id;
-    this.user = user;
+    this.userId = user;
     this.paymentReceipt = paymentReceipt;
     this.products = products;
   }
@@ -68,7 +68,7 @@ public class OrderDatabaseModel {
         product.quantity)
       );
     }
-    return new OrderEntity(id, user, status, products, paymentReceipt);
+    return new OrderEntity(id.toString(), userId, status, products, paymentReceipt);
   }
 
 }
