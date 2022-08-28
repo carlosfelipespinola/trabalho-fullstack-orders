@@ -5,15 +5,43 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class OrderProductModel {
 
-  public String name;
+  private String name;
 
-  public float price;
+  private float price;
 
-  public int quantity;
+  private int quantity;
+
+  public OrderProductModel() {}
 
   public OrderProductModel(String name, float price, int quantity) {
     this.name = name;
     this.price = price;
     this.quantity = quantity;
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public float getPrice() {
+    return price;
+  }
+
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  
 }

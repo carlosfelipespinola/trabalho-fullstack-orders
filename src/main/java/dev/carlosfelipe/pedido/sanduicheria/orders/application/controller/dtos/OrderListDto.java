@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderEntity;
 
 public class OrderListDto extends ArrayList<OrderDto> {
-    public final ArrayList<OrderDto> orders;
+    private ArrayList<OrderDto> orders;
+
+    public OrderListDto() {}
 
     public OrderListDto(ArrayList<OrderDto> orders) {
         this.orders = orders;
@@ -17,5 +19,13 @@ public class OrderListDto extends ArrayList<OrderDto> {
             _orders.add(OrderDto.fromOrderEntity(order));
         }
         return new OrderListDto(_orders);
+    }
+
+    public ArrayList<OrderDto> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<OrderDto> orders) {
+        this.orders = orders;
     }
 }

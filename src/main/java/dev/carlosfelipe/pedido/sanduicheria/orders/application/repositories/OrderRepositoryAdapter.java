@@ -51,7 +51,8 @@ public class OrderRepositoryAdapter implements IOrderRepository {
 
     @Override
     public OrderEntity save(OrderEntity order) {
-        return null;
+        OrderDatabaseModel orderMapper = this.orderRepository.save(OrderDatabaseModel.fromOrderEntity(order));
+        return orderMapper.toOrderEntity();
     }
     
 }

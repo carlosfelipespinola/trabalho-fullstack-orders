@@ -20,25 +20,29 @@ public class OrderDatabaseModel {
 
   @Column
   @Id
-  public String id;
+  private String id;
 
   @Column
-  public String userId;
+  private String userId;
 
   @Column
-  public String paymentReceipt;
-
-  @Enumerated(EnumType.ORDINAL)
-  public OrderEntity.OrderStatus status;
+  private String paymentReceipt;
+  
+  @Column
+  @Enumerated(EnumType.STRING)
+  private OrderEntity.OrderStatus status;
 
   @ElementCollection
-  public List<OrderProductModel> products;
+  private List<OrderProductModel> products;
+
+  public OrderDatabaseModel() {}
 
   public OrderDatabaseModel(String id, String user, String paymentReceipt, OrderEntity.OrderStatus status, List<OrderProductModel> products) {
     this.id = id;
     this.userId = user;
     this.paymentReceipt = paymentReceipt;
     this.products = products;
+    this.status = status;
   }
 
   public static OrderDatabaseModel fromOrderEntity(OrderEntity order) {
@@ -63,12 +67,54 @@ public class OrderDatabaseModel {
     ArrayList<OrderProductEntity> products = new ArrayList<>();
     for (OrderProductModel product: this.products) {
       products.add(new OrderProductEntity(
-        product.name,
-        product.price,
-        product.quantity)
+        product.getName(),
+        product.getPrice(),
+        product.getQuantity())
       );
     }
     return new OrderEntity(id.toString(), userId, status, products, paymentReceipt);
   }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+  public String getPaymentReceipt() {
+    return paymentReceipt;
+  }
+
+  public void setPaymentReceipt(String paymentReceipt) {
+    this.paymentReceipt = paymentReceipt;
+  }
+
+  public OrderEntity.OrderStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(OrderEntity.OrderStatus status) {
+    this.status = status;
+  }
+
+  public List<OrderProductModel> getProducts() {
+    return products;
+  }
+
+  public void setProducts(List<OrderProductModel> products) {
+    this.products = products;
+  }
+
+  
 
 }

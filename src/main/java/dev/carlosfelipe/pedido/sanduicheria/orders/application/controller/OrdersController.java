@@ -26,7 +26,7 @@ public class OrdersController {
     @PostMapping("/orders")
     OrderDto create(@RequestBody OrderCreationDto dto) throws PaymentException {
         final OrderEntity createdOrder = ordersService.create(
-            dto.user,
+            dto.getUser(),
             dto.getProductEntities(),
             dto.getPaymentMethod()
         );

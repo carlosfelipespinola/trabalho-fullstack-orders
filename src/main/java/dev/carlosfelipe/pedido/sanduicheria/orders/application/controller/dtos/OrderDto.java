@@ -6,11 +6,13 @@ import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderEntity;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderProductEntity;
 
 public class OrderDto {
-    public String id;
-    public String usuario;
-    public String status;
-    public float price;
-    public ArrayList<ProductDto> products;
+    private String id;
+    private String usuario;
+    private String status;
+    private float price;
+    private ArrayList<ProductDto> products;
+
+    public OrderDto() {}
 
     public OrderDto(String id, String usuario, String status, float price, ArrayList<ProductDto> products) {
         this.id = id;
@@ -33,4 +35,46 @@ public class OrderDto {
             _products
         );
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public ArrayList<ProductDto> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<ProductDto> products) {
+        this.products = products;
+    }
+
+    
 }

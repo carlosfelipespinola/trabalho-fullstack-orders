@@ -3,15 +3,15 @@ package dev.carlosfelipe.pedido.sanduicheria.orders.application.controller.dtos;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderProductEntity;
 
 public class ProductDto {
-    public String name;
-    public float unitPrice;
-    public float fullPrice;
-    public int quantity;    
+    private String name;
+    private float price;
+    private int quantity; 
+    
+    public ProductDto() {}
 
-    public ProductDto(String name, float unitPrice, float fullPrice, int quantity) {
+    public ProductDto(String name, float price, int quantity) {
         this.name = name;
-        this.unitPrice = unitPrice;
-        this.fullPrice = fullPrice;
+        this.price = price;
         this.quantity = quantity;
     }
 
@@ -19,12 +19,37 @@ public class ProductDto {
         return new ProductDto(
             product.getName(),
             product.getUnitPrice(),
-            product.getFullPrice(),
             product.getQuantity()
         );
     }
 
     OrderProductEntity tOrderProductEntity() {
-        return new OrderProductEntity(name, unitPrice, quantity);
+        return new OrderProductEntity(name, price, quantity);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    
 }
