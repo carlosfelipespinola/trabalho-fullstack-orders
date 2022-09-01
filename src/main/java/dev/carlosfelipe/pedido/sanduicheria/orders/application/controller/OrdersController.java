@@ -39,6 +39,12 @@ public class OrdersController {
         return OrderDto.fromOrderEntity(createdOrder);
     }
 
+    @PatchMapping("/orders/{id}/accept")
+    OrderDto accept(@PathVariable String id) throws OrderNotFoundException {
+        final OrderEntity createdOrder = ordersService.accept(id);
+        return OrderDto.fromOrderEntity(createdOrder);
+    }
+
     @PatchMapping("/orders/user/{user}/{order}/cancel")
     OrderDto cancel(@PathVariable String user, @PathVariable String order)
     throws OrderNotFoundException, OrderMutationForbiddenException, PaymentException {
