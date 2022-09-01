@@ -49,12 +49,11 @@ public class OrdersController {
     @GetMapping("/orders")
     ArrayList<OrderDto> findAll() {
         final ArrayList<OrderEntity> orders = ordersService.findAll();
-        System.out.println(orders.toString());
         ArrayList<OrderDto> dtos = new ArrayList<>();
         for (OrderEntity orderEntity : orders) {
             dtos.add(OrderDto.fromOrderEntity(orderEntity));
         }
-        return new ArrayList<>();
+        return dtos;
     }
 
     @GetMapping("/orders/user/{userid}")
