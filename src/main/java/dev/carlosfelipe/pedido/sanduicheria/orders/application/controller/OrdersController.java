@@ -1,7 +1,6 @@
 package dev.carlosfelipe.pedido.sanduicheria.orders.application.controller;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,6 @@ import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderInvali
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderMutationForbiddenException;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderNotFoundException;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.PaymentException;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class OrdersController {
@@ -74,11 +72,4 @@ public class OrdersController {
         }
         return dtos;
     }
-    
-    @GetMapping("/errors")
-    @ApiOperation(value = "Retorna uma lista com todos os erros que a api pode retornar. Esse chamada está aqui apenas para documentação")
-    Collection<OrderControllerException> errors() {
-        return OrdersExceptionHandler.exceptionErrorMapping.values();
-    }
-
 }
