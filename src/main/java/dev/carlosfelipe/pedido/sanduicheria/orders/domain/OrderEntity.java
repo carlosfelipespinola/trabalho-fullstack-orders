@@ -52,6 +52,10 @@ public class OrderEntity {
         this.status = status;
     }
 
+    public void setPaymentReceiptId(String paymentReceiptId) {
+        this.paymentReceiptId = paymentReceiptId;
+    }
+
     public float getPrice() {
         float price = 0;
         for (OrderProductEntity product: products) {
