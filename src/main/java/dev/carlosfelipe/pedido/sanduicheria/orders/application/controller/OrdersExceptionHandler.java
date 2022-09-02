@@ -29,7 +29,6 @@ public class OrdersExceptionHandler extends ResponseEntityExceptionHandler {
   );
 
   @ExceptionHandler(value = {OrderException.class, PaymentException.class})
-  @PostMapping
   public ResponseEntity<Object> handleExceptions(OrderException exception, WebRequest webRequest) {
     OrderControllerException response = exceptionErrorMapping.get(exception.getClass());
     if (response == null) {
