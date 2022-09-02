@@ -16,8 +16,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SpringFoxConfig implements WebMvcConfigurer {
     @Bean
     public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
+        return new Docket(DocumentationType.SWAGGER_2)
+          .useDefaultResponseMessages(false)    
+          .select()            
           .apis(RequestHandlerSelectors.basePackage("dev.carlosfelipe.pedido.sanduicheria.orders"))              
           .paths(PathSelectors.any())                          
           .build();                                           
@@ -25,8 +26,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+      registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+      registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }
