@@ -29,8 +29,8 @@ public class OrdersExceptionHandler extends ResponseEntityExceptionHandler {
     entry(OrderException.class, new OrderControllerException("Ocorreu um erro ao processar pedido", "internal-error", HttpStatus.INTERNAL_SERVER_ERROR))
   );
 
-  @ExceptionHandler(value = {OrderException.class, PaymentException.class})
-  public ResponseEntity<Object> handleExceptions(OrderException exception, WebRequest webRequest) {
+  @ExceptionHandler
+  public ResponseEntity<Object> handleExceptions(Object exception, WebRequest webRequest) {
     OrderControllerException response = exceptionErrorMapping.get(exception.getClass());
     if (response == null) {
       response = exceptionErrorMapping.get(OrderException.class);
