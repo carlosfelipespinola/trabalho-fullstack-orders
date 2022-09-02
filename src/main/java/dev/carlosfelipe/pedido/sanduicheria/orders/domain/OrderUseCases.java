@@ -17,11 +17,14 @@ public class OrderUseCases {
     }
 
 
-    public OrderEntity create(String user, ArrayList<OrderProductEntity> products, PaymentCreditCard creditCard) throws PaymentException {
+    public OrderEntity create(String user, ArrayList<OrderProductEntity> products, PaymentCreditCard creditCard) throws PaymentException, OrderInvalidException {
         String id = UUID.randomUUID().toString();
         String receipt = payment.charge(creditCard);
         OrderStatus status = OrderStatus.pending;
         final OrderEntity order = new OrderEntity(id, user, status, products, receipt);
+        if (!order.isValid()) {
+            throw new OrderInvalidException();
+        }
         return orderRepository.save(order);
     }
 

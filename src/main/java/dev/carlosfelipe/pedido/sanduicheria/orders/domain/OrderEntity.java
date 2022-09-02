@@ -59,6 +59,23 @@ public class OrderEntity {
         }
         return price;
     }
+
+    public boolean isValid() {
+        boolean isOrderValid = id != null &&
+            usuario != null &&
+            status != null &&
+            products != null &&
+            products.size() >= 1;
+        if (!isOrderValid) {
+            return false;
+        }
+        for (OrderProductEntity product: products) {
+            if (!product.isValid()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 

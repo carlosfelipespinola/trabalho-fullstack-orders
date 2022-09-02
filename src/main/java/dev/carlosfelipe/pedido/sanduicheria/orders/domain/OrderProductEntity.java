@@ -28,4 +28,8 @@ public class OrderProductEntity {
     public String getName() {
         return name;
     }
+
+    public boolean isValid() {
+        return name != null;
+    }
 }
