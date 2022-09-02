@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderException;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderInvalidException;
+import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderMutationForbiddenException;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.OrderNotFoundException;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.exceptions.PaymentException;
 
@@ -23,6 +24,7 @@ public class OrdersExceptionHandler extends ResponseEntityExceptionHandler {
   public static final Map<Class<? extends Exception>, OrderControllerException> exceptionErrorMapping = Map.ofEntries(
     entry(OrderNotFoundException.class, new OrderControllerException("Pedido não encontrado", "order-not-found-error", HttpStatus.NOT_FOUND)),
     entry(OrderInvalidException.class, new OrderControllerException("Pedido inválido", "order-invalid-error", HttpStatus.BAD_REQUEST)),
+    entry(OrderMutationForbiddenException.class, new OrderControllerException("Você não tem privilégio para acessar esse recurso", "order-mutation-forbidden-error", HttpStatus.FORBIDDEN)),
     entry(PaymentException.class, new OrderControllerException("Ocorreu um erro ao processar pagamento", "payment-error", HttpStatus.PAYMENT_REQUIRED)),
     entry(OrderException.class, new OrderControllerException("Ocorreu um erro ao processar pedido", "internal-error", HttpStatus.INTERNAL_SERVER_ERROR))
   );
