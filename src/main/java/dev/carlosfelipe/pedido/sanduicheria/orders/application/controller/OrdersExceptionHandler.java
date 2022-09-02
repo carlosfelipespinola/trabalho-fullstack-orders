@@ -30,7 +30,7 @@ public class OrdersExceptionHandler extends ResponseEntityExceptionHandler {
   );
 
   @ExceptionHandler
-  public ResponseEntity<Object> handleExceptions(Object exception, WebRequest webRequest) {
+  public ResponseEntity<Object> handleExceptions(Exception exception, WebRequest webRequest) {
     OrderControllerException response = exceptionErrorMapping.get(exception.getClass());
     if (response == null) {
       response = exceptionErrorMapping.get(OrderException.class);
