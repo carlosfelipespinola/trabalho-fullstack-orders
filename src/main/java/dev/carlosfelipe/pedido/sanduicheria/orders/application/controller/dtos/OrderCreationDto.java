@@ -1,11 +1,8 @@
 package dev.carlosfelipe.pedido.sanduicheria.orders.application.controller.dtos;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import org.springframework.boot.jackson.JsonComponent;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderProductEntity;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.PaymentCreditCard;
@@ -16,8 +13,7 @@ public class OrderCreationDto {
     private String creditCardOwner;
     private String creditCardNumber;
     private String creditCardCvv;
-    @JsonProperty("timestamp")
-    private OffsetDateTime creditCardExpirationDateIso8601;
+    private String creditCardExpirationMonthYear;
     private ArrayList<ProductDto> products;
 
     public OrderCreationDto() {};
@@ -38,7 +34,7 @@ public class OrderCreationDto {
     public PaymentCreditCard getPaymentMethod() {
         return new PaymentCreditCard(
             creditCardCvv,
-            creditCardExpirationDateIso8601,
+            creditCardExpirationMonthYear,
             creditCardNumber,
             creditCardOwner
         );
@@ -76,12 +72,12 @@ public class OrderCreationDto {
         this.creditCardCvv = creditCardCvv;
     }
 
-    public OffsetDateTime getCreditCardExpirationDateIso8601() {
-        return creditCardExpirationDateIso8601;
+    public String getCreditCardExpirationMonthYear() {
+        return creditCardExpirationMonthYear;
     }
 
-    public void setCreditCardExpirationDateIso8601(OffsetDateTime creditCardExpirationDateIso8601) {
-        this.creditCardExpirationDateIso8601 = creditCardExpirationDateIso8601;
+    public void setCreditCardExpirationMonthYear(String creditCardExpirationMonthYear) {
+        this.creditCardExpirationMonthYear = creditCardExpirationMonthYear;
     }
 
     public ArrayList<ProductDto> getProducts() {
