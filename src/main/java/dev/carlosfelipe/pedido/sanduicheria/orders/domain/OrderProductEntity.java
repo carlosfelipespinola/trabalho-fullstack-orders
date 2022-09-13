@@ -22,7 +22,7 @@ public class OrderProductEntity {
     }
 
     public float getFullPrice() {
-        return price;
+        return price * quantity;
     }
 
     public String getName() {
