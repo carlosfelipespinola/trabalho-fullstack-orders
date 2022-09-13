@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import dev.carlosfelipe.pedido.sanduicheria.orders.application.repositories.database_models.OrderDatabaseModel;
@@ -36,7 +37,7 @@ public class OrderRepositoryAdapter implements IOrderRepository {
 
     @Override
     public ArrayList<OrderEntity> findAll() {
-        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findAll();
+        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findAll(Sort.by("id").descending());
         ArrayList<OrderEntity> orders = new ArrayList<>();
         for (OrderDatabaseModel orderMapper : ordersMappers) {
             orders.add(orderMapper.toOrderEntity());
@@ -46,7 +47,12 @@ public class OrderRepositoryAdapter implements IOrderRepository {
 
     @Override
     public ArrayList<OrderEntity> findAllOf(String user) {
-        return new ArrayList<>();
+        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findByUserId(user, Sort.by("id").descending());
+        ArrayList<OrderEntity> orders = new ArrayList<>();
+        for (OrderDatabaseModel orderMapper : ordersMappers) {
+            orders.add(orderMapper.toOrderEntity());
+        }
+        return orders;
     }
 
     @Override
