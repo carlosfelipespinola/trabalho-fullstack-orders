@@ -37,7 +37,7 @@ public class OrderRepositoryAdapter implements IOrderRepository {
 
     @Override
     public ArrayList<OrderEntity> findAll() {
-        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findAll(Sort.by("id").descending());
+        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findAll(Sort.by("createdAt").descending());
         ArrayList<OrderEntity> orders = new ArrayList<>();
         for (OrderDatabaseModel orderMapper : ordersMappers) {
             orders.add(orderMapper.toOrderEntity());
@@ -47,7 +47,7 @@ public class OrderRepositoryAdapter implements IOrderRepository {
 
     @Override
     public ArrayList<OrderEntity> findAllOf(String user) {
-        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findByUserId(user, Sort.by("id").descending());
+        Iterable<OrderDatabaseModel> ordersMappers = orderRepository.findByUserId(user, Sort.by("createdAt").descending());
         ArrayList<OrderEntity> orders = new ArrayList<>();
         for (OrderDatabaseModel orderMapper : ordersMappers) {
             orders.add(orderMapper.toOrderEntity());

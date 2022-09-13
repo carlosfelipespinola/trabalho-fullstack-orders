@@ -1,5 +1,6 @@
 package dev.carlosfelipe.pedido.sanduicheria.orders.application.repositories.database_models;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderEntity;
 import dev.carlosfelipe.pedido.sanduicheria.orders.domain.OrderProductEntity;
@@ -34,6 +37,10 @@ public class OrderDatabaseModel {
 
   @ElementCollection
   private List<OrderProductModel> products;
+
+  @CreationTimestamp
+  @Column(name = "created_at")
+  private Instant createdAt;
 
   public OrderDatabaseModel() {}
 
@@ -115,6 +122,11 @@ public class OrderDatabaseModel {
     this.products = products;
   }
 
-  
+  public Instant getCreatedAt() {
+    return createdAt;
+  }
 
+  public void setCreatedAt(Instant createdAt) {
+    this.createdAt = createdAt;
+  }
 }
